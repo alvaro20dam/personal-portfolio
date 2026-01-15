@@ -1,35 +1,38 @@
 const experiences = [
   {
-    title: "Software Engineer",
-    company: "Tech Corp",
-    duration: "Jan 2020 - Present",
-    description: "Developing web applications using modern frameworks.",
-    technologies: ["React", "Node.js", "GraphQL"],
+    title: "Lead AI Researcher (Economics)",
+    company: "OpenMacro Labs",
+    duration: "Jan 2023 - Present",
+    description:
+      "Leading the development of Large Language Models (LLMs) specialized in interpreting Federal Reserve communications. Architecting the inference pipeline and deploying models that predict market volatility with 15% higher accuracy than traditional baselines.",
+    technologies: ["Python", "PyTorch", "LangChain", "Rust"],
     current: true,
   },
   {
-    title: "Junior Developer",
-    company: "Web Solutions",
-    duration: "Jun 2018 - Dec 2019",
-    description: "Assisted in building and maintaining client websites.",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    current: false,
-  },
-  {
-    title: "Intern",
-    company: "Startup Inc.",
-    duration: "Jan 2018 - May 2018",
+    title: "Senior Quantitative Developer",
+    company: "Vanguard Analytics",
+    duration: "Jun 2020 - Dec 2022",
     description:
-      "Worked on various small projects and gained practical experience.",
-    technologies: ["Python", "Django"],
+      "Bridged the gap between the data science team and engineering. Built a high-frequency data ingestion engine for stock market tick data and developed the React-based internal dashboard used by portfolio managers.",
+    technologies: ["React", "TypeScript", "FastAPI", "PostgreSQL"],
     current: false,
   },
   {
-    title: "Freelance Developer",
-    company: "Self-Employed",
-    duration: "Mar 2017 - Dec 2017",
-    description: "Provided web development services to small businesses.",
-    technologies: ["PHP", "MySQL", "WordPress"],
+    title: "Economic Data Engineer",
+    company: "Beacon Economics",
+    duration: "Jan 2019 - May 2020",
+    description:
+      "Responsible for migrating legacy econometric models from Stata/Excel to modern Python workflows. Automated the generation of weekly trade reports, reducing manual labor by 20 hours per week.",
+    technologies: ["Python", "Pandas", "Airflow", "Docker"],
+    current: false,
+  },
+  {
+    title: "Junior Econometrician",
+    company: "Global Policy Institute",
+    duration: "Mar 2017 - Dec 2018",
+    description:
+      "Conducted statistical analysis on international trade flows. Assisted senior economists in cleaning large datasets and visualizing tariff impacts for public policy papers.",
+    technologies: ["R", "SQL", "Tableau", "Excel"],
     current: false,
   },
 ];

@@ -65,22 +65,26 @@ export const Hero = () => {
             <div className="animate-fade-in">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                Software Engineer • React Specialist
+                Computational Economist • Quantitative Architect
               </span>
             </div>
             {/* Headline */}
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
-                Crafting <span className="text-primary glow-text">digital</span>
-                <br /> experiences with <br />
+              <h1 className="text-5xl md:text-5xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
+                Crafting{" "}
+                <span className="text-primary glow-text">economic</span>
+                <br /> insights with <br />
                 <span className="font-serif italic font-normal text-white">
                   precision
                 </span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
-                Hi, I'm Alvaro Gonzalez - a software engineer specializing in
-                React, Next.js, and TypeScript. I build scalable, performant web
-                applications that users love.
+                Hi, I am Alvaro Gonzalez. My work operates at the intersection
+                of Economics, Artificial Intelligence, and Software Engineering.
+                As an Economist and AI Researcher, I leverage full-stack
+                development and advanced econometrics to model complex systems
+                in monetary policy, international commerce, and business
+                strategy.
               </p>
             </div>
             {/* Call to Action Buttons */}
@@ -115,7 +119,7 @@ export const Hero = () => {
               <div className="absolute inset-0 bg-linear-to-r from-primary/30 to-secondary/20 rounded-3xl blur-xl animate-pulse"></div>
               <div className="relative glass rounded-3xl p-2 glow-border">
                 <img
-                  src="/profile-photo.jpg"
+                  src="/foto-perfil-lentes-traje.png"
                   alt="Profile Image"
                   className="w-full aspect-4/5 object-cover rounded-2xl animate-fade-in animation-delay-500"
                 />
@@ -131,7 +135,7 @@ export const Hero = () => {
                 </div>
                 {/* Stats Badge */}
                 <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float animation-delay-500">
-                  <div className="text-2xl font-bold text-primary">5+</div>
+                  <div className="text-2xl font-bold text-primary">15+</div>
                   <div className="text-xs text-muted-foreground">
                     Years Exp.
                   </div>

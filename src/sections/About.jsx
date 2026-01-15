@@ -1,29 +1,29 @@
-import { Code2, Lightbulb, Rocket, Users } from "lucide-react";
+import { Code2, Brain, LineChart, Globe } from "lucide-react";
 
 const highLights = [
   {
+    icon: LineChart,
+    title: "Econometric Analysis",
+    description:
+      "Decoding market dynamics and monetary policy through rigorous quantitative modeling.",
+  },
+  {
+    icon: Brain,
+    title: "AI & Machine Learning",
+    description:
+      "Developing intelligent agents and predictive models to automate complex research.",
+  },
+  {
     icon: Code2,
-    title: "Frontend Development",
+    title: "Full-Stack Architecture",
     description:
-      "Building responsive and interactive user interfaces with modern frameworks.",
+      "Building scalable platforms to process, visualize, and interact with economic data.",
   },
   {
-    icon: Rocket,
-    title: "Backend Development",
+    icon: Globe,
+    title: "Global Strategy",
     description:
-      "Developing robust and scalable server-side applications with modern technologies.",
-  },
-  {
-    icon: Users,
-    title: "UI/UX Design",
-    description:
-      "Creating intuitive and visually appealing user interfaces with a focus on user experience.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovations in CI/CD",
-    description:
-      "Implementing continuous integration and deployment pipelines for efficient development workflows.",
+      "Applying data-driven insights to solve challenges in international commerce and business.",
   },
 ];
 
@@ -41,42 +41,39 @@ export const About = () => {
             </div>
 
             <h2 className="text-4xl md:text-5xl font-bold leading-tight animate-fade-in animation-delay-100 text-secondary-foreground">
-              Building The Future,
+              Modeling the Future,
               <span className="font-serif italic font-normal text-white">
                 {" "}
-                one component at a time.
+                one algorithm at a time.
               </span>
             </h2>
             <div className="space-y-4 text-muted-foreground animate-fade-in animation-delay-200">
               <p>
-                I am a Software Engineer driven by the art of crafting seamless
-                digital experiences. With a specialized focus on the React
-                ecosystem, I bridge the gap between functional logic and elegant
-                design. Whether I'm architecting a robust inventory system or
-                fine-tuning the animations of a modern web dashboard, I approach
-                every project with a builder’s mindset—prioritizing performance,
-                scalability, and an intuitive user journey using tools like
-                Vite, Tailwind CSS, and TypeScript.
+                I am a Computational Economist and AI Researcher operating at
+                the intersection of macroeconomic theory and advanced
+                technology. Unlike traditional analysts, I possess the
+                engineering capability to not only derive insights but to build
+                the very systems that process them. My work focuses on decoding
+                complex dynamics in monetary policy, international commerce, and
+                business strategy using rigorous econometrics and machine
+                learning.
               </p>
               <p>
-                My technical toolkit is versatile and constantly expanding.
-                While I excel in frontend development, my expertise extends to
-                the backend with Node.js, Express, and PostgreSQL. Beyond
-                traditional web architecture, I possess a deep passion for the
-                future of tech: data science and Artificial Intelligence. I
-                actively experiment with Python, machine learning algorithms,
-                and AI agents, allowing me to view web development not just as
-                code, but as a medium for intelligent, data-driven solutions.
+                My technical approach is multidisciplinary. I leverage a
+                full-stack background (React, Node.js, TypeScript) to architect
+                scalable analytical platforms, while utilizing Python and AI
+                agents to drive deep data analysis. I view code not merely as a
+                way to build applications, but as a medium to construct robust
+                computational frameworks that solve real-world economic
+                challenges.
               </p>
               <p>
-                I believe that great software is born at the intersection of
-                strong technology and real-world understanding. My curiosity
-                about economics and complex systems informs my perspective on
-                value and efficiency, ensuring that the solutions I build solve
-                actual business problems. I am currently open to collaborating
-                on ambitious projects where I can leverage my full-stack
-                capabilities to turn complex ideas into refined, deployable
-                products.
+                Driven by the conviction that innovation requires continuous
+                evolution, I maintain a relentless focus on learning. In the
+                rapidly shifting landscapes of AI and global markets, I
+                constantly assimilate emerging methodologies—from advanced deep
+                learning architectures to the latest econometric models—ensuring
+                my work always remains at the cutting edge of the field.
               </p>
             </div>
 

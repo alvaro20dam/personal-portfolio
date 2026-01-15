@@ -1,39 +1,40 @@
 import { ArrowUpRight, Github } from "lucide-react";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
+
 const projects = [
   {
-    title: "Fintech Dashboard",
+    title: "MacroPulse AI",
     description:
-      "A comprehensive financial analytics platform with real-time data visualization, portfolio management, and AI-powered insights.",
+      "A predictive modeling engine that forecasts inflation trends and GDP growth using LSTM neural networks and real-time FRED data.",
     image: "/projects/project1.png",
-    tags: ["React", "Typescript", "NodeJS"],
+    tags: ["Python", "TensorFlow", "React", "FastAPI"],
     link: "#",
     github: "#",
   },
   {
-    title: "E-Commerce Platform",
+    title: "SEC Filing NLP Agent",
     description:
-      "A full-featured e-commerce solution with inventory management, payment processing, and analytics dashboard.",
+      "An autonomous agent capable of parsing 10-K filings to extract risk factors, sentiment signals, and regulatory compliance data.",
     image: "/projects/project2.png",
-    tags: ["Next.js", "Stripe", "PostgreSQL", "Tailwind"],
+    tags: ["OpenAI API", "Vector DB", "Next.js", "LangChain"],
     link: "#",
     github: "#",
   },
   {
-    title: "AI Writing Assistant",
+    title: "Global Trade Visualizer",
     description:
-      "An intelligent writing tool powered by GPT-4, helping users create better content faster.",
+      "Interactive 3D visualization of international trade flows, allowing users to trace supply chain dependencies and tariff impacts.",
     image: "/projects/project3.png",
-    tags: ["React", "OpenAI", "Python", "FastAPI"],
+    tags: ["Three.js", "D3.js", "Node.js", "PostgreSQL"],
     link: "#",
     github: "#",
   },
   {
-    title: "Project Management Tool",
+    title: "Quant Backtesting Engine",
     description:
-      "A collaborative workspace for teams with real-time updates, task tracking, and integrations.",
+      "A high-performance platform for testing algorithmic trading strategies against historical tick data with sub-millisecond latency.",
     image: "/projects/project4.png",
-    tags: ["Next.js", "Socket.io", "MongoDB", "Redis"],
+    tags: ["Rust", "Python", "WebSockets", "React"],
     link: "#",
     github: "#",
   },
@@ -59,8 +60,8 @@ export const Projects = () => {
             </span>
           </h2>
           <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            A selection of my recent work, from complex web applications to
-            innovative tools that solve real-world problems.
+            A selection of my recent work, bridging the gap between rigorous
+            economic theory and scalable software engineering.
           </p>
         </div>
 
@@ -135,7 +136,7 @@ export const Projects = () => {
         {/* View All CTA */}
         <div className="text-center mt-12 animate-fade-in animation-delay-500">
           <AnimatedBorderButton>
-            View All Projects
+            All Projects
             <ArrowUpRight className="w-5 h-5" />
           </AnimatedBorderButton>
         </div>
