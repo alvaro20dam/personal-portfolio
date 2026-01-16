@@ -4,33 +4,33 @@ import { useState } from "react";
 const testimonials = [
   {
     quote:
-      "Alvaro is a rare find—an economist who ships production-grade code. He bridged the gap between our theoretical models and real-time execution, automating our entire inflation forecasting pipeline.",
-    name: "Dr. Sarah Chen",
-    title: "Head of Macro Strategy at GlobalFin Insights",
+      "Alvaro goes far beyond standard technical support. His ability to write custom SQL queries and Python scripts to validate our labor data has been critical for the accuracy of our US payroll operations.",
+    name: "Sarah Miller",
+    title: "Operations Director at GroTool, LLC",
     avatar:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
   },
   {
     quote:
-      "Most developers need months to understand the domain. Alvaro understood our liquidity challenges on day one. His ability to translate complex monetary policy into an intuitive dashboard was a game-changer.",
-    name: "Marcus Reynolds",
-    title: "CTO at Nexus Trade Systems",
+      "In the volatile world of crypto, Alvaro was the voice of reason. He didn't just trade; he understood the underlying blockchain architecture and smart contracts, helping us navigate complex DeFi protocols safely.",
+    name: "Carlos Mendez",
+    title: "Senior Partner at Comunicaciones Fintech",
     avatar:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
   },
   {
     quote:
-      "We needed an AI agent that could parse SEC filings without hallucinating. Alvaro didn't just tweak a model; he engineered a robust RAG architecture that outperformed our vendor solutions by 40%.",
+      "He transformed our scattered inventory system into a centralized database. Alvaro used advanced data modeling to identify inefficiencies across 20+ locations, significantly cutting our operational costs.",
     name: "Elena Rodriguez",
-    title: "VP of Data Science at QuantAI",
+    title: "General Manager at Sercoinfal, C.A.",
     avatar:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
   },
   {
     quote:
-      "It is rare to see this level of precision in both UI engineering and econometric rigor. Alvaro doesn't just build software; he builds valid, high-performance analytical tools.",
-    name: "James Thornton",
-    title: "Director of Research at PolicyMetrics",
+      "Alvaro brought a computational approach to our economic department. His automated VBA models for GDP calculation reduced manual processing time by weeks during the 2008 monetary reconversion.",
+    name: "Dr. Hector Silva",
+    title: "Chief Economist at Banco Central de Venezuela",
     avatar:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
   },

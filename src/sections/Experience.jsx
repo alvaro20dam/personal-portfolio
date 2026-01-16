@@ -1,38 +1,53 @@
 const experiences = [
   {
-    title: "Lead AI Researcher (Economics)",
-    company: "OpenMacro Labs",
-    duration: "Jan 2023 - Present",
+    title: "Technical Support Engineer",
+    company: "GroTool, LLC",
+    duration: "Apr 2021 - Present",
     description:
-      "Leading the development of Large Language Models (LLMs) specialized in interpreting Federal Reserve communications. Architecting the inference pipeline and deploying models that predict market volatility with 15% higher accuracy than traditional baselines.",
-    technologies: ["Python", "PyTorch", "LangChain", "Rust"],
+      "Providing specialized engineering support for a cloud-based agricultural management platform. Leveraging SQL and Python scripts to validate complex payroll data and generate custom labor reports for the US sector. Utilizing AWS to monitor real-time data flows and troubleshooting React-based frontend interfaces.",
+    technologies: ["React", "Python", "SQL", "AWS"], // Python added here
     current: true,
   },
   {
-    title: "Senior Quantitative Developer",
-    company: "Vanguard Analytics",
-    duration: "Jun 2020 - Dec 2022",
+    title: "Fintech & Digital Asset Analyst",
+    company: "Comunicaciones Fintech",
+    duration: "Oct 2017 - Oct 2020",
     description:
-      "Bridged the gap between the data science team and engineering. Built a high-frequency data ingestion engine for stock market tick data and developed the React-based internal dashboard used by portfolio managers.",
-    technologies: ["React", "TypeScript", "FastAPI", "PostgreSQL"],
+      "Led the strategic analysis of international financial markets to optimize corporate resources. Specialized in the emerging blockchain ecosystem, managing technical infrastructure for Proof-of-Work (mining) and Proof-of-Stake validation. Audited and interacted with Smart Contracts to execute yield farming strategies and manage digital asset portfolios.",
+    technologies: [
+      "Blockchain",
+      "Smart Contracts",
+      "DeFi Protocols",
+      "Technical Analysis",
+    ],
     current: false,
   },
   {
-    title: "Economic Data Engineer",
-    company: "Beacon Economics",
-    duration: "Jan 2019 - May 2020",
+    title: "Operations & Cost Data Manager",
+    company: "Sercoinfal, C.A.",
+    duration: "Dec 2010 - Nov 2013",
     description:
-      "Responsible for migrating legacy econometric models from Stata/Excel to modern Python workflows. Automated the generation of weekly trade reports, reducing manual labor by 20 hours per week.",
-    technologies: ["Python", "Pandas", "Airflow", "Docker"],
+      "Directed the resource optimization strategy for a conglomerate of 20+ industrial locations. Architected and maintained a centralized database to track raw materials and inventory flow. Utilized advanced Excel formulas and data modeling to identify inefficiencies, directly increasing the company's profit margins.",
+    technologies: [
+      "Excel",
+      "Database Management",
+      "Cost Optimization",
+      "Logistics",
+    ],
     current: false,
   },
   {
-    title: "Junior Econometrician",
-    company: "Global Policy Institute",
-    duration: "Mar 2017 - Dec 2018",
+    title: "Macroeconomic Statistics Analyst",
+    company: "Banco Central de Venezuela",
+    duration: "Jun 2008 - Dec 2009",
     description:
-      "Conducted statistical analysis on international trade flows. Assisted senior economists in cleaning large datasets and visualizing tariff impacts for public policy papers.",
-    technologies: ["R", "SQL", "Tableau", "Excel"],
+      "Contributed to the calculation of the National GDP by processing large-scale datasets from the mining industry. Developed automated workflows using Excel VBA and Macros to streamline statistical analysis. Designed complex pivot tables and data models to support the 2008 monetary reconversion strategy.",
+    technologies: [
+      "Excel VBA",
+      "Advanced Statistics",
+      "Macroeconomics",
+      "Pivot Tables",
+    ],
     current: false,
   },
 ];
