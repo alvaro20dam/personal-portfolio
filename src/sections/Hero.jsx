@@ -98,8 +98,11 @@ export const Hero = () => {
             <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
               <span className="text-sm text-muted-foreground">Follow me: </span>
               {[
-                { icon: Github, href: "#" },
-                { icon: Linkedin, href: "#" },
+                { icon: Github, href: "https://github.com/alvaro20dam" },
+                {
+                  icon: Linkedin,
+                  href: "https://www.linkedin.com/in/alvaro20dam/",
+                },
                 { icon: Twitter, href: "#" },
               ].map((social, idx) => (
                 <a
@@ -119,9 +122,9 @@ export const Hero = () => {
               <div className="absolute inset-0 bg-linear-to-r from-primary/30 to-secondary/20 rounded-3xl blur-xl animate-pulse"></div>
               <div className="relative glass rounded-3xl p-2 glow-border">
                 <img
-                  src="/foto-perfil-lentes-traje.png"
+                  src="/foto-perfil-comic.png"
                   alt="Profile Image"
-                  className="w-full aspect-4/5 object-cover rounded-2xl animate-fade-in animation-delay-500"
+                  className="w-full aspect-4/5 object-cover object-top rounded-2xl animate-fade-in animation-delay-500"
                 />
 
                 {/* Floating Badge */}
