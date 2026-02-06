@@ -23,6 +23,15 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // New function to handle the interaction
+  const scrollToContact = () => {
+    setIsMobileMenuOpen(false); // Ensures mobile menu closes on click
+    const element = document.getElementById("contact");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 transition-all duration-500 ${
@@ -52,9 +61,11 @@ export const Navbar = () => {
           </div>
         </div>
 
-        {/* CTA Button */}
+        {/* CTA Button - UPDATED */}
         <div className="hidden md:block">
-          <Button size="sm">Contact Me</Button>
+          <Button size="sm" onClick={scrollToContact}>
+            Contact Me
+          </Button>
         </div>
 
         {/*Mobile Menu Button */}
@@ -66,7 +77,7 @@ export const Navbar = () => {
         </button>
       </nav>
 
-      {/* Mobile Nav - To be implemented */}
+      {/* Mobile Nav */}
       {isMobileMenuOpen && (
         <div className="md:hidden glass-strong animate-fade-in">
           <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
@@ -81,9 +92,8 @@ export const Navbar = () => {
               </a>
             ))}
 
-            <Button onClick={() => setIsMobileMenuOpen(false)}>
-              Contact Me
-            </Button>
+            {/* Mobile CTA Button - UPDATED */}
+            <Button onClick={scrollToContact}>Contact Me</Button>
           </div>
         </div>
       )}

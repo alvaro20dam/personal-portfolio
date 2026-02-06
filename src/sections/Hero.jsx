@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/purity */
 import { Button } from "@/components/Button";
 import {
@@ -7,7 +6,7 @@ import {
   Github,
   Linkedin,
   Twitter,
-  Download,
+  Download, // Make sure this is imported if you want to add an icon later
 } from "lucide-react";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
@@ -29,6 +28,35 @@ const skills = [
 ];
 
 export const Hero = () => {
+  // 1. Logic for "Contact Me" (Same as Navbar)
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // 2. Logic for "Download CV"
+  const handleDownloadCV = () => {
+    // CHANGE THIS STRING to match your actual file name in the public folder
+    const cvUrl = "/Alvaro_Gonzalez_CV.pdf";
+
+    // Create a temporary link element
+    const link = document.createElement("a");
+    link.href = cvUrl;
+
+    // OPTION A: Force Download
+    // link.download = "Alvaro_Gonzalez_CV.pdf";
+
+    // OPTION B: Open in New Tab (Recommended)
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0">
@@ -44,6 +72,7 @@ export const Hero = () => {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(30)].map((_, i) => (
           <div
+            key={i} // Added key to fix React warning
             className="absolute w-1.5 h-1.5 rounded-full opacity-60"
             style={{
               backgroundColor: "#20B2A6",
@@ -87,13 +116,20 @@ export const Hero = () => {
                 strategy.
               </p>
             </div>
-            {/* Call to Action Buttons */}
+
+            {/* Call to Action Buttons - UPDATED */}
             <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
-              <Button size="lg">
+              <Button size="lg" onClick={scrollToContact}>
                 Contact Me <ArrowRight className="w-5 h-5" />
               </Button>
-              <AnimatedBorderButton>Download CV</AnimatedBorderButton>
+
+              {/* We wrap the custom component in a div or span to handle the click if the component doesn't pass props down, 
+                  but preferably we pass onClick directly to it if your component supports it. */}
+              <div onClick={handleDownloadCV}>
+                <AnimatedBorderButton>Download CV</AnimatedBorderButton>
+              </div>
             </div>
+
             {/* Social Media Links */}
             <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
               <span className="text-sm text-muted-foreground">Follow me: </span>
@@ -103,11 +139,13 @@ export const Hero = () => {
                   icon: Linkedin,
                   href: "https://www.linkedin.com/in/alvaro20dam/",
                 },
-                { icon: Twitter, href: "#" },
+                { icon: Twitter, href: "https://x.com/" },
               ].map((social, idx) => (
                 <a
                   key={idx}
                   href={social.href}
+                  target="_blank" // Added target blank for socials
+                  rel="noopener noreferrer"
                   className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300"
                 >
                   {<social.icon className="w-5 h-5" />}
