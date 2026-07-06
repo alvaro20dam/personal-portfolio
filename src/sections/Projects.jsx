@@ -3,13 +3,13 @@ import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 
 const projects = [
   {
-    title: "MacroPulse AI",
+    title: "Augusta Global Terminal",
     description:
-      "A predictive modeling engine that forecasts inflation trends and GDP growth using LSTM neural networks and real-time FRED data.",
-    image: "/projects/project1.png",
-    tags: ["Python", "TensorFlow", "React", "FastAPI"],
-    link: "#",
-    github: "#",
+      "An institutional-grade financial intelligence platform featuring real-time macro analysis, equities quant scoring, portfolio construction lab, strategy vault, backtesting engine, and AI-powered institutional reports.",
+    image: "/projects/augusta-terminal.png",
+    tags: ["React", "Vite", "TailwindCSS", "Real-Time Data", "AI Reports"],
+    link: "https://augusta-terminal.vercel.app/",
+    github: "https://github.com/alvaro20dam",
   },
   {
     title: "SEC Filing NLP Agent",
@@ -89,12 +89,16 @@ export const Projects = () => {
                 <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <a
                     href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
                   >
                     <ArrowUpRight className="w-5 h-5" />
                   </a>
                   <a
                     href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
                   >
                     <Github className="w-5 h-5" />
@@ -133,6 +137,22 @@ export const Projects = () => {
           ))}
         </div>
 
+        {/* Coming Soon Teaser */}
+        <div className="glass rounded-2xl p-8 border border-dashed border-border/50 text-center animate-fade-in animation-delay-300 mt-8">
+          <div className="max-w-md mx-auto space-y-4">
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto">
+              <span className="text-primary text-xl">+</span>
+            </div>
+            <h4 className="text-lg font-semibold text-muted-foreground">
+              More Projects Coming Soon
+            </h4>
+            <p className="text-sm text-muted-foreground/70">
+              I'm currently working on new projects involving AI agents,
+              econometric modeling, and quantitative analysis. Stay tuned.
+            </p>
+          </div>
+        </div>
+
         {/* View All CTA */}
         <div className="text-center mt-12 animate-fade-in animation-delay-500">
           <AnimatedBorderButton>
@@ -144,3 +164,4 @@ export const Projects = () => {
     </section>
   );
 };
+
