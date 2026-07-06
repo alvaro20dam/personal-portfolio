@@ -27,34 +27,13 @@ const skills = [
   "Jest",
 ];
 
-export const Hero = () => {
+export const Hero = ({ onOpenCVModal }) => {
   // 1. Logic for "Contact Me" (Same as Navbar)
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact");
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: "smooth" });
     }
-  };
-
-  // 2. Logic for "Download CV"
-  const handleDownloadCV = () => {
-    // CHANGE THIS STRING to match your actual file name in the public folder
-    const cvUrl = "/Alvaro_Gonzalez_CV.pdf";
-
-    // Create a temporary link element
-    const link = document.createElement("a");
-    link.href = cvUrl;
-
-    // OPTION A: Force Download
-    // link.download = "Alvaro_Gonzalez_CV.pdf";
-
-    // OPTION B: Open in New Tab (Recommended)
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   };
 
   return (
@@ -125,7 +104,7 @@ export const Hero = () => {
 
               {/* We wrap the custom component in a div or span to handle the click if the component doesn't pass props down, 
                   but preferably we pass onClick directly to it if your component supports it. */}
-              <div onClick={handleDownloadCV}>
+              <div onClick={onOpenCVModal}>
                 <AnimatedBorderButton>Download CV</AnimatedBorderButton>
               </div>
             </div>
