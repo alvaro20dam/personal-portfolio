@@ -39,14 +39,14 @@ export const RequestCVModal = ({ isOpen, onClose }) => {
         {
           name: formData.name,
           email: formData.email,
-          message: `SOLICITUD DE CV: El usuario ha solicitado acceso a tu currículum desde el portfolio. Por favor, envíaselo a: ${formData.email}`,
+          message: `CV REQUEST: The user has requested access to your CV from the portfolio. Please send it to: ${formData.email}`,
         },
         publicKey
       );
 
       setSubmitStatus({
         type: "success",
-        message: "¡Solicitud enviada! Me pondré en contacto contigo a la brevedad.",
+        message: "Request sent! I will get in touch with you shortly.",
       });
       setFormData({ name: "", email: "" });
       
@@ -60,7 +60,7 @@ export const RequestCVModal = ({ isOpen, onClose }) => {
       console.error("EmailJS Error:", error);
       setSubmitStatus({
         type: "error",
-        message: error.message || "No se pudo enviar la solicitud. Por favor intenta de nuevo.",
+        message: error.message || "Failed to send request. Please try again.",
       });
     } finally {
       setIsLoading(false);
@@ -80,9 +80,9 @@ export const RequestCVModal = ({ isOpen, onClose }) => {
 
         {/* Header */}
         <div className="mb-6">
-          <h3 className="text-2xl font-bold text-foreground">Solicitud de CV</h3>
+          <h3 className="text-2xl font-bold text-foreground">Request CV</h3>
           <p className="text-sm text-muted-foreground mt-2">
-            Para proteger la privacidad de mis datos personales (teléfono y dirección), por favor introduce tu nombre y correo profesional para enviarte una copia digital del CV.
+            To protect personal data privacy (phone and address), please enter your name and professional email to request a digital copy of my CV.
           </p>
         </div>
 
@@ -90,13 +90,13 @@ export const RequestCVModal = ({ isOpen, onClose }) => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="modal-name" className="block text-sm font-medium mb-1.5">
-              Nombre / Empresa
+              Name / Company
             </label>
             <input
               id="modal-name"
               type="text"
               required
-              placeholder="Ej. Reclutador de Empresa X..."
+              placeholder="e.g. Recruiter at Company X..."
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm"
@@ -105,13 +105,13 @@ export const RequestCVModal = ({ isOpen, onClose }) => {
 
           <div>
             <label htmlFor="modal-email" className="block text-sm font-medium mb-1.5">
-              Correo Profesional
+              Work Email
             </label>
             <input
               id="modal-email"
               type="email"
               required
-              placeholder="tu@empresa.com"
+              placeholder="you@company.com"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm"
@@ -125,12 +125,12 @@ export const RequestCVModal = ({ isOpen, onClose }) => {
             disabled={isLoading || submitStatus.type === "success"}
           >
             {isLoading ? (
-              <>Enviando solicitud...</>
+              <>Sending request...</>
             ) : submitStatus.type === "success" ? (
-              <>¡Enviado!</>
+              <>Sent!</>
             ) : (
               <>
-                Solicitar CV
+                Request CV
                 <Send className="w-4 h-4" />
               </>
             )}
