@@ -12,13 +12,13 @@ const projects = [
     github: "https://github.com/alvaro20dam",
   },
   {
-    title: "SEC Filing NLP Agent",
+    title: "Child Mortality Analytics",
     description:
-      "An autonomous agent capable of parsing 10-K filings to extract risk factors, sentiment signals, and regulatory compliance data.",
-    image: "/projects/project2.png",
-    tags: ["OpenAI API", "Vector DB", "Next.js", "LangChain"],
+      "A data engineering pipeline and interactive dashboard analyzing global child mortality trends (1751-2024). Features automated Python extraction from Our World in Data, SQL modeling, and a Power BI report visualizing demographics and policy impacts.",
+    image: "/projects/beautiful-news-story-analytics.png",
+    tags: ["Python", "SQL", "Power BI", "Data Engineering", "ETL"],
     link: "#",
-    github: "#",
+    github: "https://github.com/alvaro20dam/Beautiful-News-Story-Analytics",
   },
   {
     title: "Global Trade Visualizer",
