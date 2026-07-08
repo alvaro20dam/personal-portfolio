@@ -6,7 +6,7 @@ const projects = [
     title: "Global Human Day Analysis",
     description:
       "Análisis de cómo las personas utilizan el tiempo a nivel global, visualizado mediante una interfaz web interactiva.",
-    image: "/projects/global-human-day.gif",
+    image: "/projects/global-human-day.png",
     tags: ["HTML", "Data Science", "Data Visualization"],
     link: "https://alvaro20dam.github.io/global-human-day/",
     github: "https://github.com/alvaro20dam/global-human-day",
@@ -38,18 +38,9 @@ const projects = [
     link: "#",
     github: "#",
   },
-  {
-    title: "Quant Backtesting Engine",
-    description:
-      "A high-performance platform for testing algorithmic trading strategies against historical tick data with sub-millisecond latency.",
-    image: "/projects/project4.png",
-    tags: ["Rust", "Python", "WebSockets", "React"],
-    link: "#",
-    github: "#",
-  },
 ];
 
-export const Projects = () => {
+export const Projects = ({ onViewAll }) => {
   return (
     <section id="projects" className="py-32 relative overflow-hidden">
       {/* Bg glows */}
@@ -164,7 +155,7 @@ export const Projects = () => {
 
         {/* View All CTA */}
         <div className="text-center mt-12 animate-fade-in animation-delay-500">
-          <AnimatedBorderButton>
+          <AnimatedBorderButton onClick={onViewAll}>
             All Projects
             <ArrowUpRight className="w-5 h-5" />
           </AnimatedBorderButton>
