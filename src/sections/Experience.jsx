@@ -1,58 +1,9 @@
-const experiences = [
-  {
-    title: "Technical Support Engineer",
-    company: "GroTool, LLC",
-    duration: "Apr 2021 - Present",
-    description:
-      "Providing specialized engineering support for a cloud-based agricultural management platform. Leveraging SQL and Python scripts to validate complex payroll data and generate custom labor reports for the US sector. Utilizing AWS to monitor real-time data flows and troubleshooting React-based frontend interfaces.",
-    technologies: ["React", "Python", "SQL", "AWS"], // Python added here
-    current: true,
-  },
-  {
-    title: "Fintech & Digital Asset Analyst",
-    company: "Comunicaciones Fintech",
-    duration: "Oct 2017 - Oct 2020",
-    description:
-      "Led the strategic analysis of international financial markets to optimize corporate resources. Specialized in the emerging blockchain ecosystem, managing technical infrastructure for Proof-of-Work (mining) and Proof-of-Stake validation. Audited and interacted with Smart Contracts to execute yield farming strategies and manage digital asset portfolios.",
-    technologies: [
-      "Blockchain",
-      "Smart Contracts",
-      "DeFi Protocols",
-      "Technical Analysis",
-    ],
-    current: false,
-  },
-  {
-    title: "Operations & Cost Data Manager",
-    company: "Sercoinfal, C.A.",
-    duration: "Dec 2010 - Nov 2013",
-    description:
-      "Directed the resource optimization strategy for a conglomerate of 20+ industrial locations. Architected and maintained a centralized database to track raw materials and inventory flow. Utilized advanced Excel formulas and data modeling to identify inefficiencies, directly increasing the company's profit margins.",
-    technologies: [
-      "Excel",
-      "Database Management",
-      "Cost Optimization",
-      "Logistics",
-    ],
-    current: false,
-  },
-  {
-    title: "Macroeconomic Statistics Analyst",
-    company: "Banco Central de Venezuela",
-    duration: "Jun 2008 - Dec 2009",
-    description:
-      "Contributed to the calculation of the National GDP by processing large-scale datasets from the mining industry. Developed automated workflows using Excel VBA and Macros to streamline statistical analysis. Designed complex pivot tables and data models to support the 2008 monetary reconversion strategy.",
-    technologies: [
-      "Excel VBA",
-      "Advanced Statistics",
-      "Macroeconomics",
-      "Pivot Tables",
-    ],
-    current: false,
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export const Experience = () => {
+  const { t } = useLanguage();
+  const experiences = t("experience.items");
+
   return (
     <section id="experience" className="py-32 relative overflow-hidden">
       <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2" />
@@ -61,18 +12,17 @@ export const Experience = () => {
         {/* Section Header */}
         <div className="max-w-3xl mb-16">
           <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
-            Career Journey
+            {t("experience.badge")}
           </span>
           <h2 className="text-4-xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
-            Experience that{" "}
+            {t("experience.titlePart1")}{" "}
             <span className="font-serif italic font-normal text-white">
               {" "}
-              speaks volumes.
+              {t("experience.titleItalic")}
             </span>
           </h2>
           <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            A snapshot of my professional journey, showcasing roles that have
-            shaped my skills and expertise.
+            {t("experience.description")}
           </p>
         </div>
         {/* Timeline */}
@@ -81,7 +31,7 @@ export const Experience = () => {
 
           {/* Experience Items */}
           <div className="space-y-12">
-            {experiences.map((exp, idx) => (
+            {Array.isArray(experiences) && experiences.map((exp, idx) => (
               <div
                 key={idx}
                 className="relative grid md:grid-cols-2 gap-8 animate-fade-in"
@@ -118,7 +68,7 @@ export const Experience = () => {
                         idx % 2 === 0 ? "justify-end" : ""
                       }`}
                     >
-                      {exp.technologies.map((tech, techIdx) => (
+                      {Array.isArray(exp.technologies) && exp.technologies.map((tech, techIdx) => (
                         <span
                           key={techIdx}
                           className="px-3 py-1 bg-surface rounded-full text-muted-foreground"

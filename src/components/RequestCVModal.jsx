@@ -2,8 +2,12 @@ import { useState } from "react";
 import { X, Send, CheckCircle, AlertCircle } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { Button } from "./Button";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const RequestCVModal = ({ isOpen, onClose }) => {
+  const { t } = useLanguage();
+  const cvText = t("cvModal");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -46,7 +50,7 @@ export const RequestCVModal = ({ isOpen, onClose }) => {
 
       setSubmitStatus({
         type: "success",
-        message: "Request sent! I will get in touch with you shortly.",
+        message: cvText.successMsg,
       });
       setFormData({ name: "", email: "" });
       
@@ -60,7 +64,7 @@ export const RequestCVModal = ({ isOpen, onClose }) => {
       console.error("EmailJS Error:", error);
       setSubmitStatus({
         type: "error",
-        message: error.message || "Failed to send request. Please try again.",
+        message: error.message || cvText.errorMsg,
       });
     } finally {
       setIsLoading(false);
@@ -80,9 +84,9 @@ export const RequestCVModal = ({ isOpen, onClose }) => {
 
         {/* Header */}
         <div className="mb-6">
-          <h3 className="text-2xl font-bold text-foreground">Request CV</h3>
+          <h3 className="text-2xl font-bold text-foreground">{cvText.title}</h3>
           <p className="text-sm text-muted-foreground mt-2">
-            To protect personal data privacy (phone and address), please enter your name and professional email to request a digital copy of my CV.
+            {cvText.description}
           </p>
         </div>
 
@@ -90,13 +94,13 @@ export const RequestCVModal = ({ isOpen, onClose }) => {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="modal-name" className="block text-sm font-medium mb-1.5">
-              Name / Company
+              {cvText.labels?.name}
             </label>
             <input
               id="modal-name"
               type="text"
               required
-              placeholder="e.g. Recruiter at Company X..."
+              placeholder={cvText.placeholders?.name}
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm"
@@ -105,13 +109,13 @@ export const RequestCVModal = ({ isOpen, onClose }) => {
 
           <div>
             <label htmlFor="modal-email" className="block text-sm font-medium mb-1.5">
-              Work Email
+              {cvText.labels?.email}
             </label>
             <input
               id="modal-email"
               type="email"
               required
-              placeholder="you@company.com"
+              placeholder={cvText.placeholders?.email}
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className="w-full px-4 py-3 bg-surface rounded-xl border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-sm"
@@ -125,12 +129,12 @@ export const RequestCVModal = ({ isOpen, onClose }) => {
             disabled={isLoading || submitStatus.type === "success"}
           >
             {isLoading ? (
-              <>Sending request...</>
+              <>{cvText.sendingBtn}</>
             ) : submitStatus.type === "success" ? (
-              <>Sent!</>
+              <>{cvText.successBtn}</>
             ) : (
               <>
-                Request CV
+                {cvText.submitBtn}
                 <Send className="w-4 h-4" />
               </>
             )}

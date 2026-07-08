@@ -6,9 +6,10 @@ import {
   Github,
   Linkedin,
   Twitter,
-  Download, // Make sure this is imported if you want to add an icon later
+  Download,
 } from "lucide-react";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
+import { useLanguage } from "@/context/LanguageContext";
 
 const skills = [
   "React",
@@ -28,7 +29,8 @@ const skills = [
 ];
 
 export const Hero = ({ onOpenCVModal }) => {
-  // 1. Logic for "Contact Me" (Same as Navbar)
+  const { t } = useLanguage();
+
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact");
     if (contactSection) {
@@ -47,11 +49,10 @@ export const Hero = ({ onOpenCVModal }) => {
         <div className="absolute inset-0 bg-linear-to-b from-background/20 via-background/80 to-background"></div>
       </div>
 
-      {/* Green Dots */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(30)].map((_, i) => (
           <div
-            key={i} // Added key to fix React warning
+            key={i}
             className="absolute w-1.5 h-1.5 rounded-full opacity-60"
             style={{
               backgroundColor: "#20B2A6",
@@ -65,53 +66,43 @@ export const Hero = ({ onOpenCVModal }) => {
           />
         ))}
       </div>
-      {/* Content */}
+      
       <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text Content */}
           <div className="space-y-8">
             <div className="animate-fade-in">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                Computational Economist • Quantitative Architect
+                {t("hero.badge")}
               </span>
             </div>
-            {/* Headline */}
+            
             <div className="space-y-4">
               <h1 className="text-5xl md:text-5xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
-                Crafting{" "}
-                <span className="text-primary glow-text">economic</span>
-                <br /> insights with <br />
+                {t("hero.titlePart1")}{" "}
+                <span className="text-primary glow-text">{t("hero.titleHighlight")}</span>
+                <br /> {t("hero.titlePart2")} <br />
                 <span className="font-serif italic font-normal text-white">
-                  precision
+                  {t("hero.titleItalic")}
                 </span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
-                Hi, I am Alvaro Gonzalez. My work operates at the intersection
-                of Economics, Artificial Intelligence, and Software Engineering.
-                As an Economist and AI Researcher, I leverage full-stack
-                development and advanced econometrics to model complex systems
-                in monetary policy, international commerce, and business
-                strategy.
+                {t("hero.description")}
               </p>
             </div>
 
-            {/* Call to Action Buttons - UPDATED */}
             <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
               <Button size="lg" onClick={scrollToContact}>
-                Contact Me <ArrowRight className="w-5 h-5" />
+                {t("hero.contactBtn")} <ArrowRight className="w-5 h-5" />
               </Button>
 
-              {/* We wrap the custom component in a div or span to handle the click if the component doesn't pass props down, 
-                  but preferably we pass onClick directly to it if your component supports it. */}
               <div onClick={onOpenCVModal}>
-                <AnimatedBorderButton>Download CV</AnimatedBorderButton>
+                <AnimatedBorderButton>{t("hero.downloadCv")}</AnimatedBorderButton>
               </div>
             </div>
 
-            {/* Social Media Links */}
             <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
-              <span className="text-sm text-muted-foreground">Follow me: </span>
+              <span className="text-sm text-muted-foreground">{t("hero.followMe")} </span>
               {[
                 { icon: Github, href: "https://github.com/alvaro20dam" },
                 {
@@ -123,7 +114,7 @@ export const Hero = ({ onOpenCVModal }) => {
                 <a
                   key={idx}
                   href={social.href}
-                  target="_blank" // Added target blank for socials
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300"
                 >
@@ -132,9 +123,8 @@ export const Hero = ({ onOpenCVModal }) => {
               ))}
             </div>
           </div>
-          {/* Right Column - Profile Image */}
+          
           <div className="relative animate-fade-in animate-delay-300">
-            {/* profile img*/}
             <div className="relative max-w-md mx-auto">
               <div className="absolute inset-0 bg-linear-to-r from-primary/30 to-secondary/20 rounded-3xl blur-xl animate-pulse"></div>
               <div className="relative glass rounded-3xl p-2 glow-border">
@@ -144,30 +134,29 @@ export const Hero = ({ onOpenCVModal }) => {
                   className="w-full aspect-4/5 object-cover object-top rounded-2xl animate-fade-in animation-delay-500"
                 />
 
-                {/* Floating Badge */}
                 <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float">
                   <div className="flex items-center gap-3">
                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
                     <span className="text-sm font-medium">
-                      Available for work
+                      {t("hero.availableForWork")}
                     </span>
                   </div>
                 </div>
-                {/* Stats Badge */}
+                
                 <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float animation-delay-500">
                   <div className="text-2xl font-bold text-primary">15+</div>
                   <div className="text-xs text-muted-foreground">
-                    Years Exp.
+                    {t("hero.yearsExp")}
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {/* Skills Section */}
+        
         <div className="mt-20 animate-fade-in animation-delay-600">
           <p className="text-sm text-muted-foreground mb-6 text-center">
-            Technologies I work with:
+            {t("hero.techText")}
           </p>
           <div className="relative overflow-hidden">
             <div className="flex animate-marquee">
@@ -188,7 +177,7 @@ export const Hero = ({ onOpenCVModal }) => {
           href="#about"
           className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary-foreground"
         >
-          <span className="text-xs uppercase tracking-wider">Scroll</span>
+          <span className="text-xs uppercase tracking-wider">{t("hero.scroll")}</span>
           <ChevronDown className="w-6 h-6 animate-bounce" />
         </a>
       </div>

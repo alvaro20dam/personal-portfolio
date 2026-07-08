@@ -1,53 +1,27 @@
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { useState } from "react";
-
-const testimonials = [
-  {
-    quote:
-      "Alvaro goes far beyond standard technical support. His ability to write custom SQL queries and Python scripts to validate our labor data has been critical for the accuracy of our US payroll operations.",
-    name: "Sarah Miller",
-    title: "Operations Director at GroTool, LLC",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
-  },
-  {
-    quote:
-      "In the volatile world of crypto, Alvaro was the voice of reason. He didn't just trade; he understood the underlying blockchain architecture and smart contracts, helping us navigate complex DeFi protocols safely.",
-    name: "Carlos Mendez",
-    title: "Senior Partner at Comunicaciones Fintech",
-    avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
-  },
-  {
-    quote:
-      "He transformed our scattered inventory system into a centralized database. Alvaro used advanced data modeling to identify inefficiencies across 20+ locations, significantly cutting our operational costs.",
-    name: "Elena Rodriguez",
-    title: "General Manager at Sercoinfal, C.A.",
-    avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
-  },
-  {
-    quote:
-      "Alvaro brought a computational approach to our economic department. His automated VBA models for GDP calculation reduced manual processing time by weeks during the 2008 monetary reconversion.",
-    name: "Dr. Hector Silva",
-    title: "Chief Economist at Banco Central de Venezuela",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export const Testimonials = () => {
   const [activeIdx, setActiveIdx] = useState(0);
+  const { t } = useLanguage();
+  const testimonials = t("testimonials.items");
 
   const next = () => {
-    setActiveIdx((prev) => (prev + 1) % testimonials.length);
+    if (Array.isArray(testimonials)) {
+      setActiveIdx((prev) => (prev + 1) % testimonials.length);
+    }
   };
 
   const previous = () => {
-    setActiveIdx(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
-    );
+    if (Array.isArray(testimonials)) {
+      setActiveIdx(
+        (prev) => (prev - 1 + testimonials.length) % testimonials.length
+      );
+    }
   };
+
+  if (!Array.isArray(testimonials) || testimonials.length === 0) return null;
 
   return (
     <section id="testimonials" className="py-32 relative overflow-hidden">
@@ -56,12 +30,12 @@ export const Testimonials = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
-            What People Say
+            {t("testimonials.badge")}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
-            Kinds Words from{" "}
+            {t("testimonials.titlePart1")}{" "}
             <span className="font-serif italic font-normal text-white">
-              amazing people
+              {t("testimonials.titleItalic")}
             </span>
           </h2>
         </div>
@@ -80,7 +54,12 @@ export const Testimonials = () => {
               </blockquote>
               <div className="flex items-center gap-4">
                 <img
-                  src={testimonials[activeIdx].avatar}
+                  src={
+                    activeIdx === 0 ? "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" :
+                    activeIdx === 1 ? "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" :
+                    activeIdx === 2 ? "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" :
+                    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" 
+                  }
                   alt={testimonials[activeIdx].name}
                   className="w-14 h-14 rounded-full object-cover ring-2 ring-primary/20"
                 />
@@ -105,6 +84,7 @@ export const Testimonials = () => {
               <div className="flex gap-2">
                 {testimonials.map((_, idx) => (
                   <button
+                    key={idx}
                     onClick={() => setActiveIdx(idx)}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       idx === activeIdx

@@ -9,29 +9,12 @@ import {
 import { Button } from "@/components/Button";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
-
-const contactInfo = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "alvaro@example.com",
-    href: "mailto:alvaro@example.com",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+123 456 7890",
-    href: "tel:+1234567890",
-  },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "San Francisco, CA",
-    href: "#",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export const Contact = () => {
+  const { t } = useLanguage();
+  const contactText = t("contact");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -42,6 +25,30 @@ export const Contact = () => {
     type: null, // 'success' or 'error'
     message: "",
   });
+
+  const infoArray = [
+    {
+      id: "email",
+      icon: Mail,
+      label: contactText.infoItems?.email || "Email",
+      value: "alvaro@example.com",
+      href: "mailto:alvaro@example.com",
+    },
+    {
+      id: "phone",
+      icon: Phone,
+      label: contactText.infoItems?.phone || "Phone",
+      value: "+123 456 7890",
+      href: "tel:+1234567890",
+    },
+    {
+      id: "location",
+      icon: MapPin,
+      label: contactText.infoItems?.location || "Location",
+      value: contactText.infoItems?.locationValue || "San Francisco, CA",
+      href: "#",
+    },
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -72,15 +79,14 @@ export const Contact = () => {
 
       setSubmitStatus({
         type: "success",
-        message: "Message sent successfully! I'll get back to you soon",
+        message: contactText.successMsg,
       });
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       console.log("EmailJS error:", error);
       setSubmitStatus({
         type: "error",
-        message:
-          error.text || "Failed to send message. Please try again later.",
+        message: error.text || contactText.errorMsg,
       });
     } finally {
       setIsLoading(false);
@@ -97,17 +103,16 @@ export const Contact = () => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
-            Get In Touch
+            {contactText.badge}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
-            Let's Build{" "}
+            {contactText.titlePart1}{" "}
             <span className="font-serif italic font-normal text-white">
-              something great.
+              {contactText.titleItalic}
             </span>
           </h2>
           <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            Have a project in mind? I'd love to hear about it. Send me a message
-            and let's discuss how we can work together.
+            {contactText.description}
           </p>
         </div>
 
@@ -119,13 +124,13 @@ export const Contact = () => {
                   htmlFor="name"
                   className="block text-sm font-medium mb-2"
                 >
-                  Name
+                  {contactText.labels?.name}
                 </label>
                 <input
                   id="name"
                   type="text"
                   required
-                  placeholder="Your name..."
+                  placeholder={contactText.placeholders?.name}
                   value={formData.name}
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
@@ -139,13 +144,13 @@ export const Contact = () => {
                   htmlFor="email"
                   className="block text-sm font-medium mb-2"
                 >
-                  Email
+                  {contactText.labels?.email}
                 </label>
                 <input
-                  id="name"
+                  id="email"
                   type="email"
                   required
-                  placeholder="your@email.com"
+                  placeholder={contactText.placeholders?.email}
                   value={formData.email}
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
@@ -159,14 +164,13 @@ export const Contact = () => {
                   htmlFor="message"
                   className="block text-sm font-medium mb-2"
                 >
-                  Message
+                  {contactText.labels?.message}
                 </label>
                 <textarea
                   rows={5}
-                  id="name"
-                  type="text"
+                  id="message"
                   required
-                  placeholder="Your message..."
+                  placeholder={contactText.placeholders?.message}
                   value={formData.message}
                   onChange={(e) =>
                     setFormData({ ...formData, message: e.target.value })
@@ -175,17 +179,17 @@ export const Contact = () => {
                 />
               </div>
 
-              <Button
+               <Button
                 className="w-full"
                 type="submit"
                 size="lg"
                 disabled={isLoading}
               >
                 {isLoading ? (
-                  <>Sending...</>
+                  <>{contactText.sendingBtn}</>
                 ) : (
                   <>
-                    Send Message
+                    {contactText.submitBtn}
                     <Send className="w-5 h-5" />
                   </>
                 )}
@@ -214,26 +218,28 @@ export const Contact = () => {
           <div className="space-y-6 animate-fade-in animation-delay-400">
             <div className="glass rounded-3xl p-8">
               <h3 className="text-xl font-semibold mb-6">
-                Contact Information
+                {contactText.infoTitle}
               </h3>
               <div className="space-y-4">
-                {contactInfo.map((item, i) => (
-                  <a
-                    key={i}
-                    href={item.href}
-                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-surface transition-colors group"
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <item.icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-muted-foreground">
-                        {item.label}
+                {infoArray.map((item, i) => {
+                  return (
+                    <a
+                      key={i}
+                      href={item.href}
+                      className="flex items-center gap-4 p-4 rounded-xl hover:bg-surface transition-colors group"
+                    >
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                        <item.icon className="w-5 h-5 text-primary" />
                       </div>
-                      <div className="font-medium">{item.value}</div>
-                    </div>
-                  </a>
-                ))}
+                      <div>
+                        <div className="text-sm text-muted-foreground">
+                          {item.label}
+                        </div>
+                        <div className="font-medium">{item.value}</div>
+                      </div>
+                    </a>
+                  )
+                })}
               </div>
             </div>
 
@@ -241,12 +247,10 @@ export const Contact = () => {
             <div className="glass rounded-3xl p-8 border border-primary/30">
               <div className="flex items-center gap-3 mb-4">
                 <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                <span className="font-medium">Currently Available</span>
+                <span className="font-medium">{contactText.availableTitle}</span>
               </div>
               <p className="text-muted-foreground text-sm">
-                I'm currently open to new opportunities and exciting projects.
-                Whether you need a full-time computational economist, data specialist,
-                or analytical consultant, let's talk!
+                {contactText.availableDesc}
               </p>
             </div>
           </div>

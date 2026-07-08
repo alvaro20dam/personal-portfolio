@@ -1,20 +1,22 @@
-import { Github, Linkedin, Twitter, Heart } from "lucide-react";
+import { Github, Linkedin, Twitter } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const socialLinks = [
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Github, href: "https://github.com/alvaro20dam", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/alvaro20dam/", label: "LinkedIn" },
+  { icon: Twitter, href: "https://x.com/", label: "Twitter" },
 ];
 
-const footerLinks = [
-  { href: "#about", label: "About" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
+const staticLinks = [
+  { href: "#about", labelKey: "about" },
+  { href: "#projects", labelKey: "projects" },
+  { href: "#experience", labelKey: "experience" },
+  { href: "#contact", labelKey: "contactBtn" },
 ];
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
 
   return (
     <footer className="py-12 border-t border-border">
@@ -26,19 +28,19 @@ export const Footer = () => {
               AG<span className="text-primary">.</span>
             </a>
             <p className="text-sm text-muted-foreground mt-2">
-              © {currentYear} Alvaro Gonzalez. All rights reserved.
+              © {currentYear} {t("footer.copyright") || "Alvaro Gonzalez. All rights reserved."}
             </p>
           </div>
 
           {/* Links */}
           <nav className="flex flex-wrap justify-center gap-6">
-            {footerLinks.map((link) => (
+            {staticLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                {link.label}
+                {t(`nav.${link.labelKey}`)}
               </a>
             ))}
           </nav>
@@ -49,6 +51,8 @@ export const Footer = () => {
               <a
                 key={social.label}
                 href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={social.label}
                 className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"
               >

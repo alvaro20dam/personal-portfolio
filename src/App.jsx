@@ -9,6 +9,7 @@ import { Navbar } from "@/layout/Navbar";
 import { Footer } from "@/layout/Footer";
 import { RequestCVModal } from "@/components/RequestCVModal";
 import { AllProjects } from "@/pages/AllProjects";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 function App() {
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
@@ -21,28 +22,32 @@ function App() {
 
   if (currentView === "all-projects") {
     return (
-      <div className="min-h-screen overflow-x-hidden bg-background">
-        <AllProjects onBack={() => navigateTo("home")} />
-        <Footer />
-        <RequestCVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
-      </div>
+      <LanguageProvider>
+        <div className="min-h-screen overflow-x-hidden bg-background">
+          <AllProjects onBack={() => navigateTo("home")} />
+          <Footer />
+          <RequestCVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
+        </div>
+      </LanguageProvider>
     );
   }
 
   return (
-    <div className="min-h-screen overflow-x-hidden">
-      <Navbar />
-      <main>
-        <Hero onOpenCVModal={() => setIsCVModalOpen(true)} />
-        <About />
-        <Projects onViewAll={() => navigateTo("all-projects")} />
-        <Experience />
-        <Testimonials />
-        <Contact />
-      </main>
-      <Footer />
-      <RequestCVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen overflow-x-hidden">
+        <Navbar />
+        <main>
+          <Hero onOpenCVModal={() => setIsCVModalOpen(true)} />
+          <About />
+          <Projects onViewAll={() => navigateTo("all-projects")} />
+          <Experience />
+          <Testimonials />
+          <Contact />
+        </main>
+        <Footer />
+        <RequestCVModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
+      </div>
+    </LanguageProvider>
   );
 }
 

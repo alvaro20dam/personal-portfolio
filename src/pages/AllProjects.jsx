@@ -1,71 +1,44 @@
 import { useState } from "react";
 import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
-
-const allProjectsList = [
-  {
-    title: "Global Human Day Analysis",
-    description:
-      "Analysis of how people allocate their time globally, visualized through an interactive web interface.",
-    image: "/projects/global-human-day.png",
-    tags: ["HTML", "Data Science", "Data Visualization"],
-    category: "Data Science",
-    link: "https://alvaro20dam.github.io/global-human-day/",
-    github: "https://github.com/alvaro20dam/global-human-day",
-  },
-  {
-    title: "Augusta Global Terminal v6.0",
-    description:
-      "An institutional-grade financial intelligence platform featuring real-time macro analysis, equities quant scoring, portfolio construction lab, strategy vault, backtesting engine, and AI-powered institutional reports.",
-    image: "/projects/augusta-terminal.png",
-    tags: ["React", "Vite", "TailwindCSS", "Real-Time Data", "AI Reports"],
-    category: "Finance",
-    link: "https://augusta-terminal.vercel.app/",
-    github: "https://github.com/alvaro20dam/augusta-terminal",
-  },
-  {
-    title: "Child Mortality Analytics",
-    description:
-      "A data engineering pipeline and interactive dashboard analyzing global child mortality trends (1751-2024). Features automated Python extraction from Our World in Data, SQL modeling, and a Power BI report.",
-    image: "/projects/beautiful-news-story-analytics.png",
-    tags: ["Python", "SQL", "Power BI", "Data Engineering", "ETL"],
-    category: "Data Science",
-    link: "#",
-    github: "https://github.com/alvaro20dam/Beautiful-News-Story-Analytics",
-  },
-  {
-    title: "Global Trade Visualizer",
-    description:
-      "Interactive 3D visualization of international trade flows, allowing users to trace supply chain dependencies and tariff impacts.",
-    image: "/projects/project3.png",
-    tags: ["Three.js", "D3.js", "Node.js", "PostgreSQL"],
-    category: "Web Development",
-    link: "#",
-    github: "#",
-  },
-  {
-    title: "Quant Backtesting Engine",
-    description:
-      "A high-performance platform for testing algorithmic trading strategies against historical tick data with sub-millisecond latency.",
-    image: "/projects/project4.png",
-    tags: ["Rust", "Python", "WebSockets", "React"],
-    category: "Finance",
-    link: "#",
-    github: "#",
-  },
-];
-
-const categories = ["All", "Data Science", "Web Development", "Finance"];
+import { useLanguage } from "@/context/LanguageContext";
 
 export const AllProjects = ({ onBack }) => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const { t } = useLanguage();
+  const allProjectsList = t("projects.items");
+  const texts = t("projects.allProjects");
+  const categoriesObj = t("projects.allProjects.categories");
 
-  const filteredProjects = selectedCategory === "All"
+  // Si `categoriesObj` es string (fallback por error en dict), asignamos un objeto vacío
+  const categoriesMap = typeof categoriesObj === 'object' ? categoriesObj : {};
+  const categoryKeys = Object.keys(categoriesMap);
+  const [selectedCategoryKey, setSelectedCategoryKey] = useState("all");
+
+  const filteredProjects = selectedCategoryKey === "all"
     ? allProjectsList
-    : allProjectsList.filter((p) => p.category === selectedCategory);
+    : (Array.isArray(allProjectsList) ? allProjectsList.filter(
+        (p) => p.category === categoriesMap[selectedCategoryKey] || p.category === (selectedCategoryKey === 'fullstack' ? 'Full Stack' : selectedCategoryKey === 'dataViz' ? 'Data Viz' : selectedCategoryKey === 'dataScience' ? 'Data Science' : 'AI')
+      ) : []);
+
+  // Use a heuristic or strict map to filter
+  const getFiltered = () => {
+    if (!Array.isArray(allProjectsList)) return [];
+    if (selectedCategoryKey === "all") return allProjectsList;
+    
+    // Map standard keys to categories used in the data array
+    const catMap = {
+      fullstack: "Full Stack",
+      ai: "AI",
+      dataViz: "Data Viz",
+      dataScience: "Data Science"
+    };
+
+    return allProjectsList.filter((p) => p.category === catMap[selectedCategoryKey]);
+  };
+
+  const finalProjects = getFiltered();
 
   return (
     <section className="py-24 min-h-screen relative overflow-hidden bg-background">
-      {/* Background glow effects */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-highlight/5 rounded-full blur-3xl" />
 
@@ -77,44 +50,43 @@ export const AllProjects = ({ onBack }) => {
             className="flex items-center gap-2 px-4 py-2 rounded-full glass hover:bg-surface text-sm text-muted-foreground hover:text-foreground cursor-pointer transition-all duration-300"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Home
+            {texts.backBtn}
           </button>
           <span className="text-muted-foreground text-sm font-mono">
-            {allProjectsList.length} total projects
+            {Array.isArray(allProjectsList) ? allProjectsList.length : 0} total projects
           </span>
         </div>
 
         {/* Title */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">
-            All Projects
+            {texts.titlePart1} {texts.titleItalic}
           </h1>
           <p className="text-muted-foreground">
-            A comprehensive archive of my projects, ranging from data engineering
-            pipelines and econometric analysis to web development and finance.
+            {texts.description}
           </p>
         </div>
 
         {/* Category Filters */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {categories.map((cat) => (
+          {categoryKeys.map((key) => (
             <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
+              key={key}
+              onClick={() => setSelectedCategoryKey(key)}
               className={`px-5 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-300 border cursor-pointer ${
-                selectedCategory === cat
+                selectedCategoryKey === key
                   ? "bg-primary text-primary-foreground border-primary"
                   : "bg-surface text-muted-foreground border-border/50 hover:border-primary/50 hover:text-foreground"
               }`}
             >
-              {cat}
+              {categoriesMap[key]}
             </button>
           ))}
         </div>
 
         {/* Grid Layout */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, idx) => (
+          {finalProjects.map((project, idx) => (
             <div
               key={idx}
               className="group glass rounded-2xl overflow-hidden animate-fade-in flex flex-col justify-between"
@@ -124,7 +96,7 @@ export const AllProjects = ({ onBack }) => {
                 {/* Image */}
                 <div className="relative overflow-hidden aspect-video">
                   <img
-                    src={project.image}
+                    src={project.image || "/projects/project1.png"}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
@@ -132,22 +104,26 @@ export const AllProjects = ({ onBack }) => {
                   
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                    >
-                      <ArrowUpRight className="w-5 h-5" />
-                    </a>
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
-                    >
-                      <Github className="w-5 h-5" />
-                    </a>
+                    {(project.liveUrl || project.githubUrl) && (
+                      <a
+                        href={project.liveUrl || project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
+                      >
+                        <ArrowUpRight className="w-5 h-5" />
+                      </a>
+                    )}
+                    {project.githubUrl && project.githubUrl !== "#" && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
+                      >
+                        <Github className="w-5 h-5" />
+                      </a>
+                    )}
                   </div>
                 </div>
 
@@ -167,7 +143,7 @@ export const AllProjects = ({ onBack }) => {
               {/* Tags footer */}
               <div className="p-6 pt-0">
                 <div className="flex flex-wrap gap-1.5 mt-2">
-                  {project.tags.map((tag, tagIdx) => (
+                  {Array.isArray(project.tags) && project.tags.map((tag, tagIdx) => (
                     <span
                       key={tagIdx}
                       className="px-3 py-1 rounded-full bg-surface text-[10px] font-medium border border-border/50 text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300"
