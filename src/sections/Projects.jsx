@@ -3,13 +3,22 @@ import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 
 const projects = [
   {
-    title: "Augusta Global Terminal",
+    title: "Global Human Day Analysis",
+    description:
+      "Análisis de cómo las personas utilizan el tiempo a nivel global, visualizado mediante una interfaz web interactiva.",
+    image: "/projects/global-human-day.gif",
+    tags: ["HTML", "Data Science", "Data Visualization"],
+    link: "https://alvaro20dam.github.io/global-human-day/",
+    github: "https://github.com/alvaro20dam/global-human-day",
+  },
+  {
+    title: "Augusta Global Terminal v6.0",
     description:
       "An institutional-grade financial intelligence platform featuring real-time macro analysis, equities quant scoring, portfolio construction lab, strategy vault, backtesting engine, and AI-powered institutional reports.",
     image: "/projects/augusta-terminal.png",
     tags: ["React", "Vite", "TailwindCSS", "Real-Time Data", "AI Reports"],
     link: "https://augusta-terminal.vercel.app/",
-    github: "https://github.com/alvaro20dam",
+    github: "https://github.com/alvaro20dam/augusta-terminal",
   },
   {
     title: "Child Mortality Analytics",
