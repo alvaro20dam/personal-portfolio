@@ -5,7 +5,7 @@ const projects = [
   {
     title: "Global Human Day Analysis",
     description:
-      "Análisis de cómo las personas utilizan el tiempo a nivel global, visualizado mediante una interfaz web interactiva.",
+      "Analysis of how people allocate their time globally, visualized through an interactive web interface.",
     image: "/projects/global-human-day.png",
     tags: ["HTML", "Data Science", "Data Visualization"],
     link: "https://alvaro20dam.github.io/global-human-day/",
