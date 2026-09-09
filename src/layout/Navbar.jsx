@@ -42,13 +42,15 @@ export const Navbar = () => {
       <nav className="container mx-auto px-6 flex items-center justify-between">
         <a
           href="#"
-          className="flex items-center gap-2 group text-xl font-bold tracking-tight hover:text-primary transition-colors"
+          className="flex items-center gap-2.5 group text-xl font-bold tracking-tight hover:text-primary transition-colors"
         >
-          <span className="px-2 py-1 rounded-lg bg-primary/10 border border-primary/30 text-primary text-sm font-mono font-bold group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-            VL
-          </span>
-          <span className="text-foreground font-semibold tracking-tight">
-            Valora<span className="text-primary font-normal">Labs</span>
+          <img
+            src="/valora-labs-logo.jpg"
+            alt="Valora Labs Logo"
+            className="w-8 h-8 rounded-lg object-cover border border-primary/40 group-hover:border-primary group-hover:scale-105 transition-all duration-300 shadow-sm"
+          />
+          <span className="text-foreground font-bold tracking-tight">
+            Valora<span className="text-primary font-light">Labs</span>
           </span>
         </a>
 
