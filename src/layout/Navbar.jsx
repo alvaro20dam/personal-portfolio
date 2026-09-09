@@ -45,9 +45,9 @@ export const Navbar = () => {
           className="flex items-center gap-2 group tracking-tight transition-all duration-300"
         >
           <img
-            src="/valora-labs-icon.jpg"
+            src="/valora-labs-icon.png"
             alt="Valora Labs Icon"
-            className="w-11 h-11 sm:w-13 sm:h-13 object-contain mix-blend-screen group-hover:scale-110 transition-all duration-300"
+            className="w-10 h-10 sm:w-12 sm:h-12 object-contain group-hover:scale-105 transition-transform duration-300 drop-shadow-[0_0_12px_rgba(32,178,166,0.35)]"
           />
           <span className="text-xl sm:text-2xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
             Valora<span className="text-primary font-normal">Labs</span>
