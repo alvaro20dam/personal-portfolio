@@ -9,7 +9,7 @@ const socialLinks = [
 
 const staticLinks = [
   { href: "#about", labelKey: "about" },
-  { href: "#projects", labelKey: "projects" },
+  { href: "#projects", labelKey: "products" },
   { href: "#experience", labelKey: "experience" },
   { href: "#contact", labelKey: "contactBtn" },
 ];
@@ -24,11 +24,16 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo & Copyright */}
           <div className="text-center md:text-left">
-            <a href="#" className="text-xl font-bold tracking-tight">
-              AG<span className="text-primary">.</span>
+            <a href="#" className="flex items-center gap-2 justify-center md:justify-start text-xl font-bold tracking-tight">
+              <span className="px-2 py-0.5 rounded bg-primary/10 border border-primary/30 text-primary text-xs font-mono">
+                VL
+              </span>
+              <span>
+                Valora<span className="text-primary font-normal">Labs</span>
+              </span>
             </a>
-            <p className="text-sm text-muted-foreground mt-2">
-              © {currentYear} {t("footer.copyright") || "Alvaro Gonzalez. All rights reserved."}
+            <p className="text-xs text-muted-foreground mt-2">
+              © {currentYear} {t("footer.copyright")}
             </p>
           </div>
 

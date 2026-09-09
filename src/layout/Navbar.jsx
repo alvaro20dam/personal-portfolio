@@ -5,7 +5,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const navLinks = [
   { href: "#about", key: "nav.about" },
-  { href: "#projects", key: "nav.projects" },
+  { href: "#projects", key: "nav.products" },
   { href: "#experience", key: "nav.experience" },
   { href: "#testimonials", key: "nav.testimonials" },
 ];
@@ -42,9 +42,14 @@ export const Navbar = () => {
       <nav className="container mx-auto px-6 flex items-center justify-between">
         <a
           href="#"
-          className="text-xl font-bold tracking-tight hover:text-primary"
+          className="flex items-center gap-2 group text-xl font-bold tracking-tight hover:text-primary transition-colors"
         >
-          AG<span className="text-primary">.</span>
+          <span className="px-2 py-1 rounded-lg bg-primary/10 border border-primary/30 text-primary text-sm font-mono font-bold group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+            VL
+          </span>
+          <span className="text-foreground font-semibold tracking-tight">
+            Valora<span className="text-primary font-normal">Labs</span>
+          </span>
         </a>
 
         {/* Desktop Nav */}
@@ -54,7 +59,7 @@ export const Navbar = () => {
               <a
                 href={link.href}
                 key={index}
-                className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground rounded-full hover:bg-surface"
+                className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground rounded-full hover:bg-surface transition-colors"
               >
                 {t(link.key)}
               </a>
