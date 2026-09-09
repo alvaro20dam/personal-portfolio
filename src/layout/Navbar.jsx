@@ -42,15 +42,18 @@ export const Navbar = () => {
       <nav className="container mx-auto px-6 flex items-center justify-between">
         <a
           href="#"
-          className="flex items-center gap-2.5 group text-xl font-bold tracking-tight hover:text-primary transition-colors"
+          className="flex items-center gap-3 group tracking-tight transition-all duration-300"
         >
-          <img
-            src="/valora-labs-logo.jpg"
-            alt="Valora Labs Logo"
-            className="w-8 h-8 rounded-lg object-cover border border-primary/40 group-hover:border-primary group-hover:scale-105 transition-all duration-300 shadow-sm"
-          />
-          <span className="text-foreground font-bold tracking-tight">
-            Valora<span className="text-primary font-light">Labs</span>
+          <div className="relative">
+            <div className="absolute -inset-1 bg-primary/20 rounded-xl blur-xs group-hover:bg-primary/40 transition-all duration-300" />
+            <img
+              src="/valora-labs-logo.jpg"
+              alt="Valora Labs Logo"
+              className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl object-cover border border-primary/50 group-hover:border-primary group-hover:scale-105 transition-all duration-300 shadow-md shadow-primary/10"
+            />
+          </div>
+          <span className="text-xl sm:text-2xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+            Valora<span className="text-primary font-normal">Labs</span>
           </span>
         </a>
 

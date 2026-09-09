@@ -24,14 +24,14 @@ export const Footer = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo & Copyright */}
           <div className="text-center md:text-left">
-            <a href="#" className="flex items-center gap-2.5 justify-center md:justify-start text-xl font-bold tracking-tight">
+            <a href="#" className="flex items-center gap-3 justify-center md:justify-start text-xl sm:text-2xl font-bold tracking-tight">
               <img
                 src="/valora-labs-logo.jpg"
                 alt="Valora Labs Logo"
-                className="w-7 h-7 rounded-md object-cover border border-primary/30"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl object-cover border border-primary/40 shadow-sm"
               />
               <span>
-                Valora<span className="text-primary font-light">Labs</span>
+                Valora<span className="text-primary font-normal">Labs</span>
               </span>
             </a>
             <p className="text-xs text-muted-foreground mt-2">
